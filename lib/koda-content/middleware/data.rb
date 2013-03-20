@@ -5,7 +5,7 @@ require_relative '../models/mongo_grid'
 require_relative '../models/hash'
 
 module Koda
-  class Db
+  class Data
     def initialize(app)
       @app = app
 

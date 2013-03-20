@@ -39,7 +39,7 @@ class MongoMedia
   
   def populate_from_plain request
     @content_type = request.media_type
-    @body = request.env["rack.input"].read        
+    @body = request.env["rack.input"].read
   end
   
   def request_is_multipart_form params

@@ -11,7 +11,7 @@ class MongoDatabase
   
   def collection_links(user)
     all_user_collections(user.alias,user.isadmin).map do |collection|
-      # TODO: may need to prefix this with rack mount location ie /api
+      # TODO: may need to prefix this with middleware mount location ie /api
       {'href' => '/' + collection, 'rel' => 'full', 'title' => collection, 'alias' => collection}
     end
   end
@@ -57,7 +57,6 @@ class MongoDatabase
   def flat_file
     flat_file = []
       all_user_collections('*').each do |collection|
-        puts "koda coll #{collection}"
         if(collection != 'objectlabs-system' && collection != '_koda_media')
 
           docs = collection(collection).content_links(nil, nil, nil)
