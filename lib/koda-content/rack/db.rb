@@ -1,3 +1,8 @@
+require_relative '../models/mongo_config'
+require_relative '../models/mongo_database'
+require_relative '../models/mongo_grid'
+require_relative '../models/hash'
+
 module Koda
   class Db
     def initialize(app)

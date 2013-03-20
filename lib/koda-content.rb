@@ -7,11 +7,10 @@ require 'erb'
 require 'net/http'
 require 'rest_client'
 require 'dalli'
-#require_relative '../../koda-auth/lib/auth'
-require_relative 'rack/db'
 
-Dir[File.dirname(__FILE__) + "/models/*.rb"].each {|file| require file }
-Dir[File.dirname(__FILE__) + "/helpers/*.rb"].each {|file| require file }
+require 'koda-content/rack/db'
+require 'koda-content/routes/api'
+
 
 module Koda
   class Api < Sinatra::Base
@@ -19,7 +18,6 @@ module Koda
 
     use Rack::MethodOverrideWithParams
     use Koda::Db
-    #use Koda::Auth
 
     def options(path, opts={}, &block)
       route 'OPTIONS', path, opts, &block
@@ -97,6 +95,3 @@ module Koda
    end
   end
 end
-
-
-require_relative '../lib/routes/api'

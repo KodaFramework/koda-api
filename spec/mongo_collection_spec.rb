@@ -1,5 +1,5 @@
 require 'bson'
-require_relative '../lib/models/mongo_collection'
+require_relative '../lib/koda-content/models/mongo_collection'
 
 describe 'Mongo Collection' do
   

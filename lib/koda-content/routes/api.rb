@@ -1,4 +1,6 @@
-class Koda::Api
+require 'sinatra/base'
+
+class Koda::Api < Sinatra::Base
   before '/*' do
     env['koda_user'] = {isadmin: true, isallowed: true, alias: 'anonymous'} if settings.allow_anonymous and not env.has_key?('koda_user')
     halt 405, "You must either use an authorisation provider, or set :anonymous, true" if not env.has_key?('koda_user')

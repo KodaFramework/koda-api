@@ -1,6 +1,6 @@
 require 'bson'
 require 'time'
-require_relative '../lib/models/mongo_document'
+require_relative '../lib/koda-content/models/mongo_document'
 
 describe 'Mongo Document' do
   

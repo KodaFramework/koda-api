@@ -1,3 +1,5 @@
+require_relative './mongo_media'
+
 class MongoGrid
   def initialize grid, meta_data_collection
     @grid = grid
