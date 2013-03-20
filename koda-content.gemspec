@@ -2,17 +2,17 @@
 lib = File.expand_path('../lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
-require 'bundler/version'
+require 'koda-content/version'
 
 Gem::Specification.new do |s|
   s.name        = "koda-content"
-  s.version     = "0.0.12"
+  s.version     = Koda::Content::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Marcel du Prez", "Derek Ekins"]
   s.email       = ["marceldupr@gmail.com", "derek@spathi.com"]
   s.homepage    = "https://github.com/KodaFramework"
-  s.summary     = "Koda Content - restfull json and and image store"
-  s.description = "Koda Content - restfull json and and image store"
+  s.summary     = "Koda Content - restful json and and media store"
+  s.description = "Koda Content - restful json and and media store"
 
   s.required_rubygems_version = ">= 1.3.6"
 
@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'bson_ext'
   s.add_dependency 'shared-mime-info'
   s.add_dependency 'dalli'
-  s.add_dependency 'rest-client'
   s.add_dependency 'json'
 
   s.add_development_dependency 'rspec', '>= 2.8'

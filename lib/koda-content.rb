@@ -1,12 +1,9 @@
-require 'mongo'
-require 'sinatra/base'
 require 'json'
+require 'dalli'
+require 'sinatra/base'
 require 'sinatra/jsonp'
 require 'rack-methodoverride-with-params'
-require 'erb'
-require 'net/http'
-require 'rest_client'
-require 'dalli'
+
 
 require 'koda-content/rack/db'
 require 'koda-content/routes/api'
@@ -70,11 +67,6 @@ module Koda
       end
 
       set :allow_anonymous, ENV.has_key?('allow_anonymous') ? !!ENV['allow_anonymous'] : true
-
-      # --------------------------------------------------------------------------
-      # Sign up to Janrain Engage and paste your api key here
-      # --------------------------------------------------------------------------
-      set :janrain_api_key, "6c7c4318166d62ad9416231aedca6385e7d7978f"
 
       # --------------------------------------------------------------------------
       # Dalli (memcache) settings

@@ -1,3 +1,4 @@
+require 'mongo'
 require_relative '../models/mongo_config'
 require_relative '../models/mongo_database'
 require_relative '../models/mongo_grid'
