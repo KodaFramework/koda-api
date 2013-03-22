@@ -27,7 +27,11 @@ class CollectionDouble
 
     take(skip(sort(found, options),options),options)
   end
-  
+
+  def find_document(name)
+    @collection.select {|doc|doc.id == name }.first
+  end
+
   def name
     @name
   end

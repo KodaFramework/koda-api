@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
 
   s.add_dependency 'mongo'
+  s.add_dependency 'mongoid'
   s.add_dependency 'sinatra'
   s.add_dependency 'rack-methodoverride-with-params'
   s.add_dependency 'sinatra-jsonp'
@@ -25,11 +26,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'shared-mime-info'
   s.add_dependency 'dalli'
   s.add_dependency 'json'
+  s.add_dependency 'multi_json', '>= 1.5'
 
   s.add_development_dependency 'rspec', '>= 2.8'
   s.add_development_dependency 'rack-test'
   s.add_development_dependency 'shotgun'
   s.add_development_dependency 'watchr'
+  s.add_development_dependency 'rake'
 
   s.files        = Dir.glob("{lib}/**/*")
   #s.executables  = ['bundle']

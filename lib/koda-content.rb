@@ -3,7 +3,7 @@ require 'dalli'
 require 'sinatra/base'
 require 'sinatra/jsonp'
 require 'rack-methodoverride-with-params'
-
+require 'mongoid'
 
 require 'koda-content/middleware/data'
 require 'koda-content/routes/api'
@@ -39,7 +39,15 @@ module Koda
     end
 
     configure do
-      set :protection, :except => [:remote_token, :frame_options, :json_csrf, :http_origin]
+      Mongoid.configure do |config|
+        config.sessions = {
+            :default => {
+                :hosts => ["localhost:27017"], :database => "koda"
+            }
+        }
+      end
+
+      set :protection, :except => [:remote_token, :frame_options, :json_csrf, :http_origin, :session_hijacking]
       set :public_folder, File.dirname(__FILE__) + '/public'
 
       # --------------------------------------------------------------------------

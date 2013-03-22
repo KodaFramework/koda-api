@@ -1,8 +1,7 @@
 require_relative '../lib/koda-content/models/mongo_grid'
 require_relative '../lib/koda-content/models/mongo_media'
 require_relative '../lib/koda-content/models/mongo_collection'
-require_relative './doubles/mongo_grid_double'
-require_relative './doubles/mongo_db_double'
+require_relative './fake-mongo'
 require 'json'
 
 describe 'Mongo Grid' do
