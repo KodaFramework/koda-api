@@ -5,7 +5,6 @@ require 'sinatra/jsonp'
 require 'rack-methodoverride-with-params'
 require 'mongoid'
 
-require 'koda-content/middleware/data'
 require 'koda-content/routes/api'
 
 
@@ -14,7 +13,7 @@ module Koda
     helpers Sinatra::Jsonp
 
     use Rack::MethodOverrideWithParams
-    use Koda::Data
+    #use Koda::Data
 
     def options(path, opts={}, &block)
       route 'OPTIONS', path, opts, &block

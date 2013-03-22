@@ -7,6 +7,11 @@ module Koda
     field :name
     field :provider
     field :provider_uid
+    field :is_admin, type: Boolean
+
+    def is_admin?
+      is_admin
+    end
 
     class << self
       def make(options)
