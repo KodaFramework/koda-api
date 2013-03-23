@@ -1,6 +1,5 @@
 require 'rspec/core/rake_task'
-require 'rubygems'
-require 'bundler'
+require 'bundler/setup'
 require 'rspec/core/rake_task'
 Bundler::GemHelper.install_tasks
 
@@ -11,3 +10,5 @@ task :spec do
     t.pattern = 'spec/**/*_spec.rb'
   end
 end
+
+task :default => :spec
