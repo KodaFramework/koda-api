@@ -27,7 +27,7 @@ describe 'Koda access integration' do
   end
 
   before :each do
-    Koda::Document.stub(:where).with(type: anything(), name: 'access-control.json').and_return(nil)
+    Koda::Document.stub(:where).with(type: anything(), name: 'access-control.json').and_return([])
   end
 
   def setup_acl(url, acl)
