@@ -26,6 +26,10 @@ describe 'Koda access integration' do
     Koda::AuthorisationSpec::AuthorisationTestApp
   end
 
+  before :each do
+    Koda::Document.stub(:where).with(type: anything(), name: 'access-control.json').and_return(nil)
+  end
+
   def setup_acl(url, acl)
     acl_document = Koda::Document.for(url)
     acl_document.data = acl
