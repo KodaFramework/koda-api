@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'shared-mime-info'
   s.add_dependency 'dalli'
   s.add_dependency 'json'
-  s.add_dependency 'multi_json', '>= 1.5'
+  #s.add_dependency 'multi_json', '>= 1.5'
 
   s.add_development_dependency 'rspec', '>= 2.8'
   s.add_development_dependency 'rack-test'
