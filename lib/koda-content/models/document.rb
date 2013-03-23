@@ -9,6 +9,10 @@ module Koda
     field :type
     field :data, type: Hash
 
+    def alias
+      File.basename name, ".*"
+    end
+
     class << self
       def for(url)
         document = Koda::Document.new
