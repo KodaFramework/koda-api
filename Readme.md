@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/KodaFramework/koda-content.png)](https://travis-ci.org/KodaFramework/koda-content])
+[![Build Status](https://travis-ci.org/KodaFramework/koda-content.png)](https://travis-ci.org/KodaFramework/koda-content)
 
 # Koda Content
 A lightweight sinatra app that provides a restful API for storing and retrieving json and media data.
