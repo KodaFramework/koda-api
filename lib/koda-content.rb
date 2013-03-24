@@ -5,7 +5,7 @@ require 'sinatra/jsonp'
 require 'rack-methodoverride-with-params'
 require 'mongoid'
 
-require 'koda-content/routes/api'
+require 'koda-content/api'
 
 
 module Koda
@@ -30,11 +30,7 @@ module Koda
       if (@env['HTTP_CACHE_CONTROL'] == 'no-cache')
         response['Cache-Control'] = 'no-cache'
         response['Pragma'] = 'no-cache'
-        expires = -1
       end
-
-      @db_wrapper = env['koda_db']
-      @grid_wrapper = env['koda_db_grid']
     end
 
     configure do
@@ -49,19 +45,10 @@ module Koda
       set :protection, :except => [:remote_token, :frame_options, :json_csrf, :http_origin, :session_hijacking]
       set :public_folder, File.dirname(__FILE__) + '/public'
 
-      # --------------------------------------------------------------------------
-      # Sinatra View Options (don't modify)
-      # --------------------------------------------------------------------------
       set :view_format, :erb
       set :view_options, { :escape_html => true }
 
-      # --------------------------------------------------------------------------
-      # This is a workaround for Cedar apps where production ENV var not being set
-      # Please create an environment var on Heroku and set it to production
-      # --------------------------------------------------------------------------
-      if ENV['ENVIRONMENT']
-        set :environment, ENV['ENVIRONMENT']
-      end
+      set :environment, ENV['ENVIRONMENT'] if ENV['ENVIRONMENT']
 
       # --------------------------------------------------------------------------
       # Cache documents until they are changed (recommended for production)
@@ -74,23 +61,6 @@ module Koda
       end
 
       set :allow_anonymous, ENV.has_key?('allow_anonymous') ? !!ENV['allow_anonymous'] : true
-
-      # --------------------------------------------------------------------------
-      # Dalli (memcache) settings
-      # --------------------------------------------------------------------------
-      set :cache, Dalli::Client.new
-      set :short_ttl, 400
-      set :long_ttl, 4600
-
-      # --------------------------------------------------------------------------
-      # This is needed for janrain auth
-      # --------------------------------------------------------------------------
-      set :sessions, true
-
-      # --------------------------------------------------------------------------
-      # This is so shotgun keeps session vars
-      # --------------------------------------------------------------------------
-      set :session_secret, "something"
-   end
+    end
   end
 end

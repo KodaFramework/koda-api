@@ -33,11 +33,4 @@ describe "document" do
       doc.alias.should == 'porsche'
     end
   end
-
-  #describe "access_control" do
-  #  it "is nil when nothing specified" do
-  #    doc = Document.new url: '/cars/porsche'
-  #    doc.access_control.should be_nil
-  #  end
-  #end
 end

@@ -1,6 +1,6 @@
 require 'sinatra/base'
-require_relative '../models/user'
-require_relative '../models/document'
+require 'koda-content/models/user'
+require 'koda-content/models/document'
 
 class Koda::Api < Sinatra::Base
   before do
