@@ -5,7 +5,7 @@
 # Koda Content
 A lightweight sinatra app that provides a restful API for storing and retrieving json and media data.
 
-All data is stored in mongo
+All json data is stored in mongo, media data can be stored wherever you like or use one of the built in storage providers.
 
 ## Setup
 
