@@ -6,6 +6,8 @@ require 'rack-methodoverride-with-params'
 require 'mongoid'
 
 require 'koda-content/api'
+require 'koda-content/media_storage/file_system'
+require 'koda-content/models/media'
 
 
 module Koda
@@ -13,7 +15,6 @@ module Koda
     helpers Sinatra::Jsonp
 
     use Rack::MethodOverrideWithParams
-    #use Koda::Data
 
     def options(path, opts={}, &block)
       route 'OPTIONS', path, opts, &block
@@ -61,6 +62,8 @@ module Koda
       end
 
       set :allow_anonymous, ENV.has_key?('allow_anonymous') ? !!ENV['allow_anonymous'] : true
+      Koda::MediaStorage::FileSystem.root_folder = File.join(Dir.pwd, 'media')
+      Koda::Media.provider = Koda::MediaStorage::FileSystem
     end
   end
 end

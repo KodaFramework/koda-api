@@ -1,8 +1,24 @@
 require 'sinatra/base'
 require 'koda-content/models/user'
 require 'koda-content/models/document'
+require 'koda-content/models/media'
+
+module Koda
+  module DocumentHelper
+    def get_or_create_document(url)
+      existing_document = Koda::Document.where(url: url).first
+      is_new = existing_document.nil?
+      existing_document = Koda::Document.for(request.path_info) if is_new
+      {
+          document: existing_document,
+          is_new: is_new
+      }
+    end
+  end
+end
 
 class Koda::Api < Sinatra::Base
+  include Koda::DocumentHelper
   before do
     env['koda_user'] = Koda::User.new({is_admin: true, alias: 'anonymous'}) if settings.allow_anonymous and not env.has_key?('koda_user')
     halt 405, "You must either use an authorisation provider, or set :anonymous, true" if not env.has_key?('koda_user')
@@ -12,11 +28,19 @@ class Koda::Api < Sinatra::Base
     env['koda_user']
   end
 
-  get /\..*$/ do
-    document = Koda::Document.where(url: request.path_info).first
+  get '/*.json' do
+    url = request.path_info
+    document = Koda::Document.where(url: url).first
     exists = !document.nil?
     status exists ? 200 : 404
     document.data.to_json if exists
+  end
+
+  get '/*.*' do
+    url = request.path_info
+    document = Koda::Document.where(url: url).first
+    content_type document.data['storage']['content-type']
+    Koda::Media.get(document.data)
   end
 
   get '/*' do
@@ -29,12 +53,12 @@ class Koda::Api < Sinatra::Base
 
   put '/*.json' do
     document_data = JSON(request.env['rack.input'].read)
-    existing_document = Koda::Document.where(url: request.path_info).first
-    is_new = existing_document.nil?
-    existing_document = Koda::Document.for(request.path_info) if is_new
-    existing_document.data = document_data
-    existing_document.save
-    status is_new ? 201 : 200
+
+    res = get_or_create_document request.path_info
+    res[:document].data = document_data
+    res[:document].save
+
+    status res[:is_new] ? 201 : 200
   end
 
   delete '/*.json' do
@@ -43,6 +67,19 @@ class Koda::Api < Sinatra::Base
     existing_document.delete if exists
     status exists ? 200 : 404
   end
+
+  put '/*.*' do
+    url = request.path_info
+
+    media_storage_info = Koda::Media.put params[:media], url
+
+    res = get_or_create_document url
+    res[:document].data = {storage: media_storage_info}
+    res[:document].save
+
+    status res[:is_new] ? 201 : 200
+  end
+
 
   options '/' do
     response['Allow'] = 'GET'
