@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mongoid'
   s.add_dependency 'sinatra'
   s.add_dependency 'rack-methodoverride-with-params'
-  s.add_dependency 'sinatra-jsonp'
+  s.add_dependency 'sinatra-jsonp', '~> 0.4'
 
   s.add_dependency 'bson_ext'
   s.add_dependency 'shared-mime-info'
