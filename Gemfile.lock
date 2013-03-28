@@ -10,7 +10,7 @@ PATH
       rack-methodoverride-with-params
       shared-mime-info
       sinatra
-      sinatra-jsonp
+      sinatra-jsonp (~> 0.4)
 
 GEM
   remote: https://rubygems.org/
