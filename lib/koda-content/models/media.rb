@@ -2,9 +2,9 @@ module Koda
   class Media
     class << self
       attr_accessor :provider
-      def put(file, url)
+      def put(file, uri)
         storage_provider = provider.new
-        storage_provider.put(file, url)
+        storage_provider.put(file, uri)
       end
 
       def get(document_data)

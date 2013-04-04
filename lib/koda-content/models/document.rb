@@ -4,7 +4,7 @@ module Koda
   class Document
     include Mongoid::Document
 
-    field :url
+    field :uri
     field :name
     field :type
     field :data, type: Hash
@@ -14,11 +14,11 @@ module Koda
     end
 
     class << self
-      def for(url)
+      def for(uri)
         document = Koda::Document.new
-        document.url = url
-        document.type = File.dirname url
-        document.name = File.basename url
+        document.uri = uri
+        document.type = File.dirname uri
+        document.name = File.basename uri
         document.data = {}
         document
       end

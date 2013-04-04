@@ -5,7 +5,7 @@ describe "document" do
   describe "url" do
     it "sets the url of the document" do
       doc = Koda::Document.for '/cars/porsche'
-      doc.url.should == '/cars/porsche'
+      doc.uri.should == '/cars/porsche'
     end
   end
   describe "type" do

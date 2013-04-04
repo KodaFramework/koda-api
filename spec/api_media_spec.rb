@@ -27,17 +27,16 @@ describe Koda::Api do
 
   describe 'put' do
     it 'creates a media object' do
-      url = '/cars/bugatti.gif'
+      uri = '/cars/bugatti.gif'
       storage_info = {provider: :test, location: '/fake'}
       media_document = mock('media_document')
-      Koda::Media.should_receive(:put).with(anything(), url).and_return(storage_info)
-      Koda::Document.should_receive(:where).with(url: url).and_return([])
-      Koda::Document.should_receive(:for).with(url).and_return(media_document)
+      Koda::Media.should_receive(:put).with(anything(), uri).and_return(storage_info)
+      Koda::Document.should_receive(:where).with(uri: uri).and_return([])
+      Koda::Document.should_receive(:for).with(uri).and_return(media_document)
       media_document.should_receive(:data=).with(storage: storage_info)
       media_document.should_receive(:save)
 
-      put url, media: Rack::Test::UploadedFile.new(test_media_file, 'image/gif')
-      puts last_response.body
+      put uri, media: Rack::Test::UploadedFile.new(test_media_file, 'image/gif')
       last_response.status.should == 201
     end
   end
