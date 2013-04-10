@@ -2,34 +2,13 @@ require 'sinatra/base'
 require 'koda-content/models/user'
 require 'koda-content/models/document'
 require 'koda-content/models/media'
-
-module Koda
-  module DocumentHelper
-    def get_or_create_document(uri)
-      existing_document = Koda::Document.where(uri: uri).first
-      is_new = existing_document.nil?
-      existing_document = Koda::Document.for(uri) if is_new
-      {
-          document: existing_document,
-          is_new: is_new
-      }
-    end
-
-    def uri
-      request.path_info.gsub request.script_name, ''
-    end
-  end
-end
+require 'koda-content/document_helper'
 
 class Koda::Api < Sinatra::Base
   include Koda::DocumentHelper
   before do
     env['koda_user'] = Koda::User.new({is_admin: true, alias: 'anonymous'}) if settings.allow_anonymous and not env.has_key?('koda_user')
     halt 405, "You must either use an authorisation provider, or set :anonymous, true" if not env.has_key?('koda_user')
-  end
-
-  def current_user
-    env['koda_user']
   end
 
   get '/*.json' do
@@ -80,12 +59,7 @@ class Koda::Api < Sinatra::Base
     status res[:is_new] ? 201 : 200
   end
 
-
   options '/' do
     response['Allow'] = 'GET'
-  end
-
-  get '/session/current_user' do
-    JSONP current_user
   end
 end
