@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'koda-content'
+require 'koda-api'
 
 describe Koda::Api do
   include Rack::Test::Methods

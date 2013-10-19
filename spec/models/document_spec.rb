@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'koda-content/models/document'
+require 'koda-api/models/document'
 
 describe "document" do
   describe "url" do

@@ -1,7 +1,7 @@
 require 'sinatra/base'
-require 'koda-content/models/user'
-require 'koda-content/models/document'
-require 'koda-content/models/media'
+require 'koda-api/models/user'
+require 'koda-api/models/document'
+require 'koda-api/models/media'
 
 module Koda
   module DocumentHelper

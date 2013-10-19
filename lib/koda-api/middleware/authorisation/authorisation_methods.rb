@@ -1,4 +1,4 @@
-require 'koda-content/models/document'
+require 'koda-api/models/document'
 
 module Koda
   module AuthorisationMethods

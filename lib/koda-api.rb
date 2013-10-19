@@ -5,9 +5,9 @@ require 'sinatra/jsonp'
 require 'rack-methodoverride-with-params'
 require 'mongoid'
 
-require 'koda-content/api'
-require 'koda-content/media_storage/file_system'
-require 'koda-content/models/media'
+require 'koda-api/api'
+require 'koda-api/media_storage/file_system'
+require 'koda-api/models/media'
 
 
 module Koda

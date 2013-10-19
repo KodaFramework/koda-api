@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/KodaFramework/koda-content.png)](https://travis-ci.org/KodaFramework/koda-content)
-[![Code Climate](https://codeclimate.com/github/KodaFramework/koda-content.png)](https://codeclimate.com/github/KodaFramework/koda-content)
+[![Build Status](https://travis-ci.org/KodaFramework/koda-api.png)](https://travis-ci.org/KodaFramework/koda-api)
+[![Code Climate](https://codeclimate.com/github/KodaFramework/koda-api.png)](https://codeclimate.com/github/KodaFramework/koda-api)
 
 
 # Koda Content

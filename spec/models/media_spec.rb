@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'koda-content/models/media'
+require 'koda-api/models/media'
 
 describe Koda::Media do
   describe "store" do

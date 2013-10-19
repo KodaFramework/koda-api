@@ -1,6 +1,6 @@
 require 'tmpdir'
 require 'spec_helper'
-require 'koda-content/media_storage/file_system'
+require 'koda-api/media_storage/file_system'
 
 describe Koda::MediaStorage::FileSystem do
   let (:test_media_file) { File.join(File.dirname(__FILE__), '../media/test_media.gif') }
