@@ -1,7 +1,6 @@
 require 'json'
 require 'dalli'
 require 'sinatra/base'
-require 'sinatra/jsonp'
 require 'rack-methodoverride-with-params'
 require 'mongoid'
 
@@ -12,8 +11,6 @@ require 'koda-api/models/media'
 
 module Koda
   class Api < Sinatra::Base
-    helpers Sinatra::Jsonp
-
     use Rack::MethodOverrideWithParams
 
     def options(path, opts={}, &block)
