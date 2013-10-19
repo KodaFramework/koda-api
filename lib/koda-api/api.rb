@@ -55,7 +55,6 @@ class Koda::Api < Sinatra::Base
 
   put '/*.json' do
     document_data = JSON(request.env['rack.input'].read)
-
     res = get_or_create_document uri
     res[:document].data = document_data
     res[:document].save

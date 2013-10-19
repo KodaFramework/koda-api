@@ -20,17 +20,17 @@ describe "document" do
     end
   end
 
-  describe "name" do
+  describe "file_name" do
     it "gets the alias from the last part of the url" do
       doc = Koda::Document.for '/cars/porsche.json'
-      doc.name.should == 'porsche.json'
+      doc.file_name.should == 'porsche.json'
     end
   end
 
-  describe "alias" do
-    it "gets the alias from the last part of the url" do
+  describe "url_name" do
+    it "gets the url_name from the last part of the url" do
       doc = Koda::Document.for '/cars/porsche.json'
-      doc.alias.should == 'porsche'
+      doc.url_name.should == 'porsche'
     end
   end
 end

@@ -4,13 +4,15 @@ module Koda
   class Document
     include Mongoid::Document
 
+    attr_accessor :url
+
     field :uri
-    field :name
+    field :file_name
     field :type
     field :data, type: Hash
 
-    def alias
-      File.basename name, ".*"
+    def url_name
+      File.basename file_name, ".*"
     end
 
     class << self
@@ -18,7 +20,7 @@ module Koda
         document = Koda::Document.new
         document.uri = uri
         document.type = File.dirname uri
-        document.name = File.basename uri
+        document.file_name = File.basename uri
         document.data = {}
         document
       end
