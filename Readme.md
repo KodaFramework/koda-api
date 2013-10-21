@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/KodaFramework/koda-content.png)](https://travis-ci.org/KodaFramework/koda-content)
-[![Code Climate](https://codeclimate.com/github/KodaFramework/koda-content.png)](https://codeclimate.com/github/KodaFramework/koda-content)
+[![Build Status](https://travis-ci.org/KodaFramework/koda-api.png)](https://travis-ci.org/KodaFramework/koda-api)
+[![Code Climate](https://codeclimate.com/github/KodaFramework/koda-api.png)](https://codeclimate.com/github/KodaFramework/koda-api)
 
 
-# Koda Content
+# Koda Api
 A lightweight sinatra app that provides a restful API for storing and retrieving json and media data.
 
 All json data is stored in mongo, media data can be stored wherever you like or use one of the built in storage providers.

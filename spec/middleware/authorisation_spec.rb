@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'sinatra/base'
-require 'koda-content/middleware/content-authorisation'
-require 'koda-content/models/user'
-require 'koda-content/models/document'
+require 'koda-api/middleware/content-authorisation'
+require 'koda-api/models/user'
+require 'koda-api/models/document'
 
 module Koda::AuthorisationSpec
   class AuthorisationTestApp < Sinatra::Base

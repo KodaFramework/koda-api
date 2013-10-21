@@ -1,8 +1,9 @@
 require 'sinatra/base'
-require 'koda-content/models/user'
-require 'koda-content/models/document'
-require 'koda-content/models/media'
-require 'koda-content/document_helper'
+require 'koda-api/models/user'
+require 'koda-api/models/document'
+require 'koda-api/models/media'
+require 'koda-api/document_helper'
+
 
 class Koda::Api < Sinatra::Base
   include Koda::DocumentHelper

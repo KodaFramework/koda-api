@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'koda-content/models/user'
+require 'koda-api/models/user'
 
 describe 'user' do
   describe 'creates a new user' do
